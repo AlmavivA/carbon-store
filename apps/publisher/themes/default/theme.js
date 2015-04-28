@@ -309,11 +309,14 @@ var engine = caramel.engine('handlebars', (function() {
                                 checkboxString = 'checked="checked"';
                             }else{
                                 checkboxString = '';
+                                value = "off";
                             }
                         }else{
                             value="on";
                         }
-                        out = '<div class="custom-form-right col-lg-5 col-md-8 col-sm-8 col-xs-12"><input type="checkbox" ' + renderFieldMetaData(field, null, options) + ' '+checkboxString+' ></div>';
+                        out = '<div class="custom-form-right col-lg-5 col-md-8 col-sm-8 col-xs-12">' +
+                            '<input type="checkbox" value="' + value + '" ' + renderFieldMetaData(field, null, options) + ' '+checkboxString+' />' +
+                            '</div>';
                         break;
                     case 'password':
                         out = '<div class="custom-form-right col-lg-5 col-md-8 col-sm-8 col-xs-12"><input type="password" value="' + value + '" ' + renderFieldMetaData(field, null, options) + ' ></div>';
@@ -351,11 +354,15 @@ var engine = caramel.engine('handlebars', (function() {
                                 checkboxString = 'checked="checked"';
                             }else{
                                 checkboxString = '';
+                                value = "off";
                             }
                         }else{
                             value="on";
                         }
-                        out = '<td valign="top"><input type="checkbox" ' + renderFieldMetaData(field, null, {"hash" : {"mode" : null}}) + ' '+checkboxString+' ></td>';
+                        out = '<td valign="top">' +
+                            '<input type="checkbox" value="' + value + '" ' + renderFieldMetaData(field, null, {"hash" : {"mode" : null}}) + ' '+checkboxString+' >' +
+                            '<input type="hidden" value="' + value + '"  name="' + field.name.tableQualifiedName + '_dummy"  />' +
+                            '</td>';
                         break;
                     case 'password':
                         out = '<td valign="top"><input type="password" value="' + value + '" ' + renderFieldMetaData(field, null, {"hash" : {"mode" : null}}) + ' ></td>';
@@ -391,11 +398,15 @@ var engine = caramel.engine('handlebars', (function() {
                                 checkboxString = 'checked="checked"';
                             }else{
                                 checkboxString = '';
+                                value = "off";
                             }
                         }else{
                             value="on";
                         }
-                        out = '<td valign="top"><input type="checkbox" ' + renderFieldMetaData(field, null, {"hash" : {"mode" : null}}) + ' '+checkboxString+' ></td>';
+                        out = '<td valign="top">' +
+                            '<input type="checkbox" value="'+value+'" ' + renderFieldMetaData(field, null, {"hash" : {"mode" : null}}) + ' '+checkboxString+' >' +
+                            '<input type="hidden" value="'+value+'"  name="' + field.name.tableQualifiedName + '_dummy"  />' +
+                            '</td>';
                         break;
                     case 'password':
                         out = '<td valign="top"><input type="password" value="' + value + '" ' + renderFieldMetaData(field, null, {"hash" : {"mode" : null}}) + ' ></td>';

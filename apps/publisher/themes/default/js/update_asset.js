@@ -82,7 +82,17 @@ $(function() {
     });
     $('.js-unbounded-table').on('click','a',function(event){
         removeUnboundRow($(event.target));
+    });
 
+    $('.js-unbounded-table').on('click','input[type="checkbox"]',function(event){
+        var checkbox = event.target;
+        var hiddenField = $(checkbox).next();
+        console.info(hiddenField);
+        if($(checkbox).is(":checked")){
+            $(hiddenField).val('on');
+        }else{
+            $(hiddenField).val('off');
+        }
     });
 
     $('#tmp_refernceTableForUnbounded').detach().attr('id','refernceTableForUnbounded').appendTo('body');

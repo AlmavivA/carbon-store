@@ -80,8 +80,6 @@ var asset = {};
         return result;
     };
     var setField = function(field, attrName, data, attributes, table) {
-
-
         if (field.type == 'option-text') {
             var optionsSet = [];
             var textSet = [];
@@ -112,13 +110,32 @@ var asset = {};
             var items = processOptionTextList(list);
             attributes[attrName] = items;
         }else if(field.type == 'checkbox'){
+            var tableName = attrName.split("_")[0];
+
             if(data[attrName] == null || data[attrName] == undefined){
-                attributes[attrName] = "off"; // When there is no value for a checkbox we set it's value to empty
+                var arrayLength = 0;
+                for(var fieldLabel in data){
+                    if(data[fieldLabel].constructor===Array && fieldLabel.split("_")[0] == tableName){
+                        if(data[fieldLabel].length > arrayLength){
+                            arrayLength = data[fieldLabel].length;
+                        }
+                    }
+                }
+                if(arrayLength){ //This is the unbounded table state
+                    attributes[attrName] = data[attrName+"_dummy"];
+                }else{ //This is the normal state
+                    attributes[attrName] = "off";
+                }
             }else{
-                attributes[attrName] = "on";  //We set it's value to on
+                /*
+                 Replacing the original array with the dummy one.
+                 This is done because we need to make sure all the fields are in the correct order.
+                 Rhino backend is dropping the unchecked elements values.
+                 */
+                attributes[attrName] = data[attrName+"_dummy"];
             }
         }else {
-            if (data[attrName] != null && String(data[attrName]).replace(/^\s+|\s+$/g,"") != "") {
+            if (data[attrName]) {
                 attributes[attrName] = data[attrName];
             } else {
                 log.debug(attrName + ' will not be saved.');

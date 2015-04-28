@@ -15,56 +15,54 @@
   -->
 <div class="row">
     <div class="col-lg-10 col-md-10 col-sm-11 col-xs-12 wr-filters">
-      {{#if assetCategoryDetails.hasCategories}}
-      <div class="wr-filter-category">
-          <a href="#" class="ico-filter ctrl-filter-category dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Select Category ... <span class="fa fa-angle-down pull-right"></span></a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              {{#each assetCategoryDetails.values}}
-              <li><a tabindex="-1" href="#">{{this}}</a></li>
-              {{/each}}
-          </ul>          
-      </div>
-      {{/if}}
-
-      <div class="wr-search">
-        <div>
-        <form class="form-group" id="assetSearchForm" action='{{url "/asts/"}}{{rxt.shortName}}/list' style="margin-left:-4px">
-          <input type="text" name="query" class="" placeholder="{{t "Search.."}}" id="inp_searchAsset" value="{{paging.query}}" /><a type="button" href="#" class="btn-search" id="searchButton"><span class="fa fa-search"></span></a>
-          <input type="hidden" name="sortby" value="{{paging.sortBy}}"/>
-          <input type="hidden" name="sort" value="{{paging.sortOrder}}"/>
-        </form>
+        {{#if assetCategoryDetails.hasCategories}}
+        <div class="wr-filter-category">
+            <a href="#" class="ico-filter ctrl-filter-category dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Select Category ... <span class="fa fa-angle-down pull-right"></span></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                {{#each assetCategoryDetails.values}}
+                <li><a tabindex="-1" href="#">{{this}}</a></li>
+                {{/each}}
+            </ul>
         </div>
-      </div>       
+        {{/if}}
+
+        <div class="wr-search">
+            <div>
+                <form class="form-group" id="assetSearchForm" action='{{url "/asts/"}}{{rxt.shortName}}/list' style="margin-left:-4px">
+                    <input type="text" name="query" class="" placeholder="{{t "Search.."}}" id="inp_searchAsset" value="{{paging.query}}" /><a type="button" href="#" class="btn-search" id="searchButton"><span class="fa fa-search"></span></a>
+                    <input type="hidden" name="sortby" value="{{paging.sortBy}}"/>
+                    <input type="hidden" name="sort" value="{{paging.sortOrder}}"/>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-12  wr-filters">
+    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-12 wr-filters">
         <div class="dropdown pull-right">
             <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
                 <img src="{{url "/themes/default/img/icons/ico-sort.png"}}" />
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li role="presentation"><a class="filter-item" href="?sortby=overview_name&sort=ASC">Name</a></li>
-                <li role="presentation"><a class="filter-item"  href="?sortby=overview_version&sort=ASC">Version</a></li>
+                <li role="presentation"><a class="filter-item" href="?sortby=overview_version&sort=ASC">Version</a></li>
                 <li role="presentation"><a class="filter-item" href="?sortby=overview_provider&sort=ASC">Status</a></li>
                 <li role="presentation"><a class="filter-item" href="?sortby=overview_createdtime&sort=DESC">Date/Time Created</a></li>
             </ul>
         </div>
     </div>
-</div>
-<div class="row ovrd-wr-asst-listing">
-    <div class="col-md-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
         <!-- content -->
         <div class="ast-container" id="list_assets_table_body">
             {{#if assets}}
-                {{> list_assets_table_body assets}}
+            {{> list_assets_table_body assets}}
             {{else}}
-                <div class="emptyAssets-MsgDiv">
-                    
-                    <p class="emptyAssets">We are sorry! we couldn't find anything for you ...</p>
+            <div class="emptyAssets-MsgDiv">
 
-                </div>
+                <p class="emptyAssets">We are sorry! we couldn't find anything for you ...</p>
+
+            </div>
             {{/if}}
         </div>
-</div>
+    </div>
 </div>
 
 

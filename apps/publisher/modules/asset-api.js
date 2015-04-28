@@ -258,7 +258,6 @@ var result;
         var user = server.current(session);
         var assetReq = req.getAllParameters('UTF-8');
 
-
         var asset = null;
         var meta;
         if (request.getParameter("asset")) {

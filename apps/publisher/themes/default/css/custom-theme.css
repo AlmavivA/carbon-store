@@ -70,6 +70,7 @@
 
 
 /* sorting */
+
 .wr-filters  .dropdown-menu {
     border: 0 solid rgba(0, 0, 0, 0.15);
     border-radius: 0;
@@ -83,7 +84,6 @@
 .wr-filters  .dropdown-menu a {
     color:#888;
 }
-
 .dropdown-menu-content {
     background-color: #232323;
     padding:10px 20px;
@@ -176,7 +176,9 @@ a.ctrl-filter-category:hover {
 .wr-filter-category .dropdown-menu li a:hover {
 	background:#61a3e6;
 }
-
+.version-info-container{
+    margin-bottom: 15px;
+}
 .ctrl-filter-category .glyphicon {
 	font-size:13px;
 	font-weight:100;
